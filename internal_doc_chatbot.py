@@ -170,7 +170,7 @@ def order_document_sections_by_query_similarity(query: str, doc_embeddings: pd.D
     
     Return the list of document sections, sorted by relevance in descending order.
     """
-    query_model = get_query_model()
+    query_model = get_doc_model()
     query_embedding = get_embeddings(query, model=query_model)
     doc_embeddings['similarity'] = doc_embeddings['embeddings'].apply(lambda x: vector_similarity(x, query_embedding))
     doc_embeddings.sort_values(by='similarity', inplace=True, ascending=False)
