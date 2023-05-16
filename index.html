@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Internal Doc Chatbot [EXPLORATORY USE ONLY]</title>
+</head>
+<body>
+  <h1>Internal Doc Chatbot</h1>
+  <p>This is an exploratory use of ChatGPT on our internal Confluence documentation. Basically, we modify in the background your question to add
+  some context.</p>
+  <p>The context is that of a Confluence note that appears to be the most similar to the question. Similarity in Natural Language Processing (NLP)
+  is resolved by converting a text into a vector, also called embeddings, and a simple vector similarity metric is used
+  to identify texts that are similar.</p>
+  <p>Once the most similar document is found, its content is added to the prompt. ChatGPT uses then the context to answer the question.</p>
+  <p>Although not perfect, the tool can provide a more useful choice for the document (or documents) to look at to answer your question with more depth.</p>
+  <p>Try it!</p>
+
+   <form action="/" method="post">
+    <!-- Text input -->
+    <label for="text_input">Type your question:</label><br>
+    <input type="text" id="text_input" name="text_input" size="30"><br>
+
+    <input type="submit" value="Submit">
+  </form>
+
+  <!-- Text output -->
+  {% if text_output %}
+  <p style="color: red;"><b>Chatbot:</b>{{ text_output }}</p>
+  {% endif %}
+  
+  <p style="color: red;">See</p>
+  {% for link in links %}
+  <a href="{{ link }}" target="_blank">{{ link }}</a><br>
+  {% endfor %}
+  
+</body>
+</html>
