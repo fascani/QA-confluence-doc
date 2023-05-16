@@ -74,7 +74,7 @@ def get_doc_model():
     '''
     Model string to calculate the embeddings.
     '''
-    return 'text-search-curie-doc-001'
+    return 'text-embedding-ada-002'
 
 def get_embeddings(text: str, model: str) -> list[float]:
     '''
